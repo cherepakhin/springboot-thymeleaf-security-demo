@@ -22,3 +22,11 @@ Login: admin@gmail.com Pass: admin
 Login: user@gmail.com  Pass: user
 
 Blog post - [https://www.javaguides.net/2018/09/spring-boot-spring-mvc-role-based-spring-security-jpa-thymeleaf-mysql-tutorial.html](https://www.javaguides.net/2018/09/spring-boot-spring-mvc-role-based-spring-security-jpa-thymeleaf-mysql-tutorial.html)
+
+#### Screens
+
+![doc/not_logged.png](doc/not_logged.png)
+
+![doc/for_user.png](doc/for_user.png)
+
+![doc/for_admin.png](doc/for_admin.png)
