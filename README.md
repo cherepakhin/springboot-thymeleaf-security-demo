@@ -36,3 +36,14 @@ For __user__ login:
 for __admin__ login:
 
 ![doc/for_admin.png](doc/for_admin.png)
+
+[userhome.html](src/main/resources/templates/userhome.html):
+
+````html
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+    <h3>You will see this only if you are ADMIN</h3>
+    <p>
+        <a th:href="@{/admin/home}">Admin Home</a>
+    </p>
+</div>
+````
