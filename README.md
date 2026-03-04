@@ -41,7 +41,7 @@ for __admin__ login (added string __"You will see this only if you are ADMIN"__)
 
 ````html
 <div sec:authorize="hasRole('ROLE_ADMIN')">
-    <h3>You will see this only if you are ADMIN</h3>
+    <h3>You will see this only if you are <b>ADMIN</b></h3>
     <p>
         <a th:href="@{/admin/home}">Admin Home</a>
     </p>
