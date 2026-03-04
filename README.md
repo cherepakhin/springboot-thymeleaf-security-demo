@@ -37,7 +37,7 @@ for __admin__ login:
 
 ![doc/for_admin.png](doc/for_admin.png)
 
-[userhome.html](src/main/resources/templates/userhome.html):
+[userhome.html](src/main/resources/templates/userhome.html) (line 20):
 
 ````html
 <div sec:authorize="hasRole('ROLE_ADMIN')">
