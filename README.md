@@ -33,8 +33,8 @@ For __user__ login:
 
 ![doc/for_user.png](doc/for_user.png)
 
-for __admin__ login:
-
+for __admin__ login (added string __"You will see this only if you are ADMIN"__):
+ 
 ![doc/for_admin.png](doc/for_admin.png)
 
 [userhome.html](src/main/resources/templates/userhome.html) (line 20):
