@@ -25,8 +25,14 @@ Blog post - [https://www.javaguides.net/2018/09/spring-boot-spring-mvc-role-base
 
 #### Screens
 
+__Not__ logged:
+
 ![doc/not_logged.png](doc/not_logged.png)
 
+For __user__ login:
+
 ![doc/for_user.png](doc/for_user.png)
+
+for __admin__ login:
 
 ![doc/for_admin.png](doc/for_admin.png)
