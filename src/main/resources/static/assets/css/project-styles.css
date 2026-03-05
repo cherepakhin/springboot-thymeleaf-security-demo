@@ -15,12 +15,13 @@ h3 {
   line-height: 1.7;
 }
 
-.middle-panel {
-  margin-bottom: 4em;
+.panel {
+  border-radius: 0px;
 }
 
-.panel {
-  margin-top: 2em;
+.middle-panel {
+  margin-top: 0.5em;
+  margin-bottom: 4em;
 }
 
 .container {
@@ -29,4 +30,30 @@ h3 {
 
 .welcome {
   margin-top: 5em;
+}
+
+.message {
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.5em;
+}
+
+.btn {
+  border-radius: 0px;
+}
+
+.alert {
+  border-radius: 0px;
+}
+
+.form-control {
+  border-radius: 0px;
+}
+
+element.style {
+  margin-top: 4em;
+}
+
+.login-top {
+  margin-top: 4em;
 }
