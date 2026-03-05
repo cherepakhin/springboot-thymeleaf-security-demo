@@ -18,3 +18,15 @@ h3 {
 .middle-panel {
   margin-bottom: 4em;
 }
+
+.panel {
+  margin-top: 2em;
+}
+
+.container {
+  margin-top: 0em;
+}
+
+.welcome {
+  margin-top: 5em;
+}

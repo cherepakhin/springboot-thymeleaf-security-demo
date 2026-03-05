@@ -9,10 +9,10 @@
 <title>User Home</title>
 </head>
 <body>
-	<div layout:fragment="content">
-		<p>
+	<div layout:fragment="content" class="container">
+		<div class="welcome">
 			Welcome <span sec:authentication="principal.username">User</span>
-		</p>
+		</div>
 		<p>
 			<a th:href="@{/}">Root</a>
 		</p>
