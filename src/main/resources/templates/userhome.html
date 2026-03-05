@@ -14,32 +14,30 @@
 			Welcome <span sec:authentication="principal.username">User</span>
 		</p>
 		<p>
+			<a th:href="@{/}">Root</a>
+		</p>
+		<p>
 			<a th:href="@{/logout}">Logout</a>
 		</p>
 
 		<div sec:authorize="hasRole('ROLE_ADMIN')">
-			<h3>You will see this only if you are ADMIN</h3>
+			<h3>You will see this only if you are <b>ADMIN</b></h3>
 			<p>
 				<a th:href="@{/admin/home}">Admin Home</a>
 			</p>
 		</div>
-		<h3>Form with CSRF Token</h3>
+		<h3>Write a message:</h3>
 		<form th:action="@{/messages}" method="post">
-			<textarea name="content" cols="50" rows="5"></textarea>
+			<textarea name="content" cols="50" rows="3"></textarea>
 			<br>
 			<input type="submit" value="Submit" />
 		</form>
-
 		<div>
-		<br>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					Messages
-				</div>
-
-				<p th:each="msg: ${msgs}" th:text="${msg.content}"></p>
+			<br>
+			<div class="panel panel-default middle-panel">
+				<div class="panel-heading">Messages</div>
+				<p th:each="msg: ${msgs}" th:text="${msg.n} + '. ' + ${msg.content}"></p>
 			</div>
-
 		</div>
 	</div>
 
