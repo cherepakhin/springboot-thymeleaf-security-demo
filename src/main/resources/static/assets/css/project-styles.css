@@ -1,0 +1,17 @@
+body {
+  padding-top: 75px;
+}
+
+.footer {
+  width: 100%;
+  background-color: black;
+  color: white;
+  height: 3em;
+  text-align: center;
+  padding-top: 0.5em;
+}
+
+h3 {
+  padding:0;
+  margin:0;
+}
