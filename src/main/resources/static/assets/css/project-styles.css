@@ -61,3 +61,8 @@ element.style {
 .login-bottom {
   padding-bottom: 0px;
 }
+
+.left-0 {
+  margin-left: 0;
+  padding-left: 0;
+}
