@@ -10,7 +10,6 @@ Java 8
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ````
 
-
 ````shell
 ./mvnw spring-boot:run
 ````
@@ -47,6 +46,35 @@ for __admin__ login (added string __"You will see this only if you are ADMIN"__)
     </p>
 </div>
 ````
+
+### Link action form to java code
+
+Form:
+
+````html
+		<h3>Write a message:</h3>
+		<form th:action="@{/messages}" method="post"> // <--- POST /messages
+			<textarea name="content" cols="50" rows="3"></textarea>
+			<br>
+			<input class="btn btn-primary" type="submit" value="Submit" />
+		</form>
+
+````
+````java
+@Controller
+public class HomeController {
+    @PostMapping("/messages")
+    public String saveMessage(Message message) {
+        messageRepository.save(message);
+        return "redirect:/home";
+    }
+}
+````
+
+### Links
+
+- [thymeleaf](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html)
+
 
 TODO:
 - tests

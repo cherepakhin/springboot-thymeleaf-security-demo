@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.logging.Logger;
+
 /**
  * @author Ramesh Fadatare
  */
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class HomeController {
     @Autowired
     private MessageRepository messageRepository;
+
+    Logger logger = Logger.getLogger(this.getClass().getSimpleName());
 
     @GetMapping("/home")
     public String home(Model model) {
@@ -24,6 +28,7 @@ public class HomeController {
 
     @PostMapping("/messages")
     public String saveMessage(Message message) {
+        logger.info("Save message: " + message.toString());
         messageRepository.save(message);
         return "redirect:/home";
     }
