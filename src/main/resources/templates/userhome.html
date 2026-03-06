@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-	layout:decorator="layout">
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	  xmlns:text-align="http://www.w3.org/1999/xhtml"
+	  layout:decorator="layout">
 
 <head>
 <title>User Home</title>
@@ -36,6 +37,21 @@
 			<div class="panel-heading">Messages</div>
 			<div class="message" th:each="msg: ${msgs}" th:text="${msg.n} + '. ' + ${msg.content}"></div>
 		</div>
+		<table id="table-messages">
+			<tr>
+				<th class="panel-heading panel-header">N</th>
+				<th class="panel-heading panel-header">CONTENT</th>
+				<th class="panel-heading panel-header">Actions</th>
+			</tr>
+			<tr th:each="msg,iterStat : ${msgs}" th:class="${iterStat.odd}? 'odd'">
+				<td class="td-n" th:text="${msg.n}">N</td>
+				<td th:text="${msg.content}">CONTENT</td>
+				<td class="action-style">
+					<a th:href="@{'/messages/edit/{n}'(n=${msg.n})}"><i class="fa fa-pencil-square-o" style="font-size:20px"></i></a>
+					<a th:href="@{'/messages/delete/{n}'(n=${msg.n})}"><i class="fa fa-trash" style="font-size:20px"></i></a>
+				</td>
+			</tr>
+		</table>
 	</div>
 
 </body>

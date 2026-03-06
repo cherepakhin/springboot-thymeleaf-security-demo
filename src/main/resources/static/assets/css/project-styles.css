@@ -66,3 +66,20 @@ element.style {
   margin-left: 0;
   padding-left: 0;
 }
+
+.panel-header {
+  background-color: #f5f5f5;
+}
+
+.action-style {
+  text-align: center;
+}
+
+#table-messages {
+  margin-bottom: 5em;
+}
+
+.td-n {
+  text-align: right;
+  padding-right: 1em;
+}

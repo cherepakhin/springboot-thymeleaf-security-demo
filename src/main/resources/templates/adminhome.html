@@ -13,9 +13,8 @@
     	<div layout:fragment="content" class="container">
 			<div class="welcome">Welcome <b>Admin Home</b>(<span sec:authentication="principal.username">Admin</span>)</div>
 	        <p sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></p>
-			<p>
-				<a th:href="@{/}">Root</a>
-			</p>
+			<p><a th:href="@{/}">Root</a></p>
+			<p><a th:href="@{/home}">To User home</a></p>
     	</div>
     </body>
     
