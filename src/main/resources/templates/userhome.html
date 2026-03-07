@@ -37,7 +37,7 @@
 			<div class="panel-heading">Messages</div>
 			<div class="message" th:each="msg: ${msgs}" th:text="${msg.n} + '. ' + ${msg.content}"></div>
 		</div>
-		<table id="table-messages">
+		<table id="table-messages" class="panel panel-default middle-panel">
 			<tr>
 				<th class="panel-heading panel-header">N</th>
 				<th class="panel-heading panel-header">CONTENT</th>
@@ -45,8 +45,8 @@
 			</tr>
 			<tr th:each="msg,iterStat : ${msgs}" th:class="${iterStat.odd}? 'odd'">
 				<td class="td-n" th:text="${msg.n}">N</td>
-				<td th:text="${msg.content}">CONTENT</td>
-				<td class="action-style">
+				<td class="td-message" th:text="${msg.content}">CONTENT</td>
+				<td class="td-action">
 					<a th:href="@{'/messages/edit/{n}'(n=${msg.n})}"><i class="fa fa-pencil-square-o" style="font-size:20px"></i></a>
 					<a th:href="@{'/messages/delete/{n}'(n=${msg.n})}"><i class="fa fa-trash" style="font-size:20px"></i></a>
 				</td>
