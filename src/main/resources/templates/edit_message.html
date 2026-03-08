@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      xmlns:text-align="http://www.w3.org/1999/xhtml"
+      layout:decorator="layout">
+<body>
+<div layout:fragment="content" class="container login left-0">
+    <p>
+        <a th:href="@{/}">Root</a>
+    </p>
+    <p>
+        <a th:href="@{/logout}">Logout</a>
+    </p>
+
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <h3>You will see this only if you are <b>ADMIN</b></h3>
+        <p>
+            <a th:href="@{/admin/home}">Admin Home</a>
+        </p>
+    </div>
+    <div class="container" style="padding-left: 0px; margin-left: 0px;">
+        <form class="form-horizontal" th:object="${message}" th:action="@{/save_message}" name="edit_form" id="edit_form"
+              method="post" role="form">
+            <div class="form-group" style="margin-left: 0px;">
+                <!-- th:value="*{content}" - get the value from field "content" of the message object th:object="${message}" -->
+                <!-- th:name="messageContent" - name parameter for send to the controller (@RequestParam(value = "messageContent")). See: -->
+                <!--  @PostMapping("/save_message")
+                    public String saveMessage(@RequestParam(defaultValue = "----", value = "newMessageContent") String messageContent) {
+                -->
+                <input type="text" class="form-control" id="message" th:name="newMessageContent"
+                       th:message="message"
+                       th:value="*{content}" maxlength="100"/>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

@@ -28,6 +28,10 @@ h3 {
   margin-top: 0em;
 }
 
+.userhome {
+  margin-top: 4em;
+}
+
 .welcome {
   margin-top: 5em;
 }
@@ -72,7 +76,7 @@ element.style {
 }
 
 #table-messages {
-  margin-bottom: 5em;
+  margin-bottom: 1em;
 }
 
 .td-n {

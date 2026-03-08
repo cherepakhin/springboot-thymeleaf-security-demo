@@ -9,7 +9,7 @@
         <title>Home</title>
     </head>
     <body>
-    	<div layout:fragment="content" class="container">
+    	<div layout:fragment="content" class="container userhome">
 		     <p sec:authorize="isAnonymous()"><a th:href="@{/login}">Login</a></p>
 	         <p><a th:href="@{/home}">User Home</a></p>
 		     <p><a th:href="@{/admin/home}">Admin Home</a></p>

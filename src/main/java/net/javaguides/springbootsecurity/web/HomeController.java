@@ -5,11 +5,12 @@ import net.javaguides.springbootsecurity.repositories.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 /**
@@ -35,20 +36,22 @@ public class HomeController {
         return "redirect:/home";
     }
 
-    @GetMapping("/messages/edit/{n}")
-    public String editMessage(@PathVariable Integer n, Model model) {
-        logger.info("Edit message: n=" + n);
-        Message message = messageRepository.getById(n);
-        logger.info("Received message:" + message);
-        model.addAttribute("content", message.getContent());
-        model.addAttribute("n", message.getN());
-        return "redirect:/home";
+    @GetMapping("/messages/edit_message/{id}")
+    public String edit(@PathVariable Integer id, Model model) {
+        Message message = messageRepository.getById(id);
+        model.addAttribute("message", message);
+        return "/edit_message"; // show templates/edit_message.html
     }
 
-    @PostMapping("/messages")
-    public String saveMessage(Message message) {
-        logger.info("Save message: " + message.toString());
-        messageRepository.save(message);
+    @PostMapping("/save_message")
+    public String saveMessage(@RequestParam(defaultValue = "----", value = "newMessageContent") String newContent,
+                              @RequestParam(value = "message") Message message
+                              ) { // from  edit_message.html -> th:name="new_content"
+        // value = "messageContent" from th:name="messageContent"
+        // see <input type="text" class="form-control" id="message" th:name="messageContent" th:value="*{content}" maxlength="100"/>
+        logger.info("New content: " + newContent);
+        logger.info("Message: " + message);
+//        messageRepository.save(message);
         return "redirect:/home";
     }
 
