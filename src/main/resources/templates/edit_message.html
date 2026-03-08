@@ -30,11 +30,14 @@
                 <!--  @PostMapping("/save_message")
                     public String saveMessage(@RequestParam(defaultValue = "----", value = "newMessageContent") String messageContent) {
                 -->
-                <input type="text" class="form-control" id="message" th:name="newMessageContent"
-                       th:message="message"
-                       th:value="*{content}" maxlength="100"/>
+                <!-- Example: -->
+                <!-- <div id="message_n" th:field="*{n}" hidden="true"/> -->
+                <input name="message_n" id="message_n" type="hidden" th:field="*{n}" />
+                <label for="message_content">Сообщение:</label>
+                <input class="form-control" id="message_content" maxlength="100" th:field="*{content}" type="text"/>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" value="Save">Сохранить</button>
+            <a class="btn btn-default" th:href="@{/home}">Отмена</a>
         </form>
     </div>
 
