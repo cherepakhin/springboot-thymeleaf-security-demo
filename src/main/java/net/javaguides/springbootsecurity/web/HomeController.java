@@ -44,8 +44,8 @@ public class HomeController {
     }
 
     @PostMapping(value = "/save_message")
-    public String saveMessage(@RequestParam(defaultValue = "----", value = "content") String newContent,
-                              @RequestParam(value = "n") Integer n
+    public String saveMessage(@RequestParam(value = "n") Integer n,
+                              @RequestParam(defaultValue = "----", value = "content") String newContent
                               ) { // from  edit_message.html -> th:name="new_content"
         // value = "messageContent" from th:name="messageContent"
         // see <input type="text" class="form-control" id="message" th:name="messageContent" th:value="*{content}" maxlength="100"/>
@@ -55,6 +55,24 @@ public class HomeController {
         message.setN(n);
         message.setContent(newContent);
         messageRepository.save(message);
+        return "redirect:/home";
+    }
+
+    @GetMapping("/new_message")
+    public String newMessage(Model model) {
+        // model.addAttribute("msgs", messageRepository.findAll());
+        return "new_message";
+    }
+
+    @PostMapping(value = "/new_message")
+    public String newMessage(@RequestParam(defaultValue = "----", value = "content") String newContent
+    ) { // from  edit_message.html -> th:name="new_content"
+        // value = "messageContent" from th:name="messageContent"
+        // see <input type="text" class="form-control" id="message" th:name="messageContent" th:value="*{content}" maxlength="100"/>
+        logger.info("New content: " + newContent);
+        Message message = new Message();
+        message.setContent(newContent);
+//        messageRepository.save(message);
         return "redirect:/home";
     }
 
