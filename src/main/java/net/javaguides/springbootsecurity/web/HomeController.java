@@ -65,14 +65,11 @@ public class HomeController {
     }
 
     @PostMapping(value = "/new_message")
-    public String newMessage(@RequestParam(defaultValue = "----", value = "content") String newContent
-    ) { // from  edit_message.html -> th:name="new_content"
-        // value = "messageContent" from th:name="messageContent"
-        // see <input type="text" class="form-control" id="message" th:name="messageContent" th:value="*{content}" maxlength="100"/>
-        logger.info("New content: " + newContent);
+    public String newMessage(@RequestParam(defaultValue = "----", value = "content") String newContent) {
+        logger.info("New message: " + newContent);
         Message message = new Message();
         message.setContent(newContent);
-//        messageRepository.save(message);
+        messageRepository.save(message);
         return "redirect:/home";
     }
 
