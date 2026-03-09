@@ -21,6 +21,18 @@ public class Message {
     @Column(nullable = false)
     private String content;
 
+    public Message() {
+        super();
+        this.n = -1;
+        this.content = "";
+    }
+
+    public Message(Integer n, String content) {
+        this();
+        this.n = n;
+        this.content = content;
+    }
+
     public Integer getN() {
         return n;
     }

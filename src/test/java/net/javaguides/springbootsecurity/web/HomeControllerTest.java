@@ -11,6 +11,7 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.Matchers.*;
@@ -117,13 +118,24 @@ public class HomeControllerTest {
     @Test
     @WithMockUser(roles = "USER")
     public void testSaveMessage_ShouldUpdateAndRedirect() throws Exception {
-        Message existing = new Message();
-        existing.setN(1);
-        existing.setContent("Old content");
+        Message existingMessage = new Message();
+        existingMessage.setN(1);
+        existingMessage.setContent("Old content");
 
-        when(messageRepository.findById(1)).thenReturn(Optional.of(existing));
-        when(messageRepository.save(any())).thenAnswer(i -> i.getArgument(0));
-
+        when(messageRepository.findById(1)).thenReturn(Optional.of(existingMessage));
+        /* Example thenAnswer with map return
+        when(messageRepository.save(existingMessage))
+                .thenAnswer(
+                        invocation -> invocation.<List<String>>getArgument(0).stream()
+                                .map(
+                                    m -> {
+                                        switch (m) {
+                                            case "1": return existingMessage;
+                                        }
+                                      return m;
+                                    }));
+        */
+        when(messageRepository.save(existingMessage)).thenReturn(existingMessage);
         mockMvc.perform(post("/save_message")
                         .with(csrf())
                         .param("n", "1")
