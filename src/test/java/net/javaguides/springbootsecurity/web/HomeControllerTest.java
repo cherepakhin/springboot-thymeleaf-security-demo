@@ -57,19 +57,11 @@ public class HomeControllerTest {
     }
 
     @Test
-    @WithMockUser(roles = "USER")
+    @WithMockUser(username = "admin@gmail.com")
     public void testRoot() throws Exception {
-        when(messageRepository.findAll()).thenReturn(Arrays.asList(msg1, msg2));
-
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"));
-//                .andExpect(model().attributeExists("msgs"));
-//                .andExpect(model().attribute("msgs", hasSize(2)))
-//                .andExpect(model().attribute("msgs", hasItem(hasProperty("n", is(1)))))
-//                .andExpect(model().attribute("msgs", hasItem(hasProperty("n", is(2)))));
-
-//        verify(messageRepository, times(1)).findAll();
     }
 
     @Test
