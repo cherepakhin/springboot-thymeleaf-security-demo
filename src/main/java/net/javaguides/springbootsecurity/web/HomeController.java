@@ -10,12 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Map;
 import java.util.logging.Logger;
 
-/**
- * @author Ramesh Fadatare
- */
 @Controller
 public class HomeController {
     @Autowired

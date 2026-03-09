@@ -51,6 +51,8 @@ for __admin__ login (added string __"You will see this only if you are ADMIN"__)
 
 Form:
 
+link: th:action="@{/messages}" method="post"
+
 ````html
 		<h3>Write a message:</h3>
 		<form th:action="@{/messages}" method="post"> // <--- POST /messages
@@ -60,13 +62,18 @@ Form:
 		</form>
 
 ````
+
+Handler in Java code (@PostMapping("/messages")):
+
+@PostMapping(value = "/new_message")<br/>
+value = "content"<br/>
+
 ````java
 @Controller
 public class HomeController {
-    @PostMapping("/messages")
-    public String saveMessage(Message message) {
-        messageRepository.save(message);
-        return "redirect:/home";
+    @PostMapping(value = "/new_message")
+    public String newMessage(@RequestParam(defaultValue = "----", value = "content") String newContent) {
+        ...
     }
 }
 ````
