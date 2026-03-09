@@ -83,17 +83,17 @@ public class HomeControllerTest {
     }
 
     @Test
-    @WithMockUser(roles = "USER")
+    @WithMockUser(username = "admin@gmail.com")
     public void testHome_ShouldReturnUserHomeWithMessages() throws Exception {
         when(messageRepository.findAll()).thenReturn(Arrays.asList(msg1, msg2));
 
         mockMvc.perform(get("/home"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("userhome"));
-//                .andExpect(model().attributeExists("msgs"));
-//                .andExpect(model().attribute("msgs", hasSize(2)))
-//                .andExpect(model().attribute("msgs", hasItem(hasProperty("n", is(1)))))
-//                .andExpect(model().attribute("msgs", hasItem(hasProperty("n", is(2)))));
+                .andExpect(view().name("userhome"))
+                .andExpect(model().attributeExists("msgs"))
+                .andExpect(model().attribute("msgs", hasSize(2)))
+                .andExpect(model().attribute("msgs", hasItem(hasProperty("n", is(1)))))
+                .andExpect(model().attribute("msgs", hasItem(hasProperty("n", is(2)))));
 
         verify(messageRepository, times(1)).findAll();
     }
