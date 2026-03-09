@@ -143,7 +143,6 @@ public class HomeControllerTest {
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/home"));
 
-//TODO: add verify before update        verify(messageRepository, times(1)).findById(1);
         verify(messageRepository, times(1)).save(argThat(m ->
                 m.getN().equals(1) && m.getContent().equals("Updated content")
         ));
