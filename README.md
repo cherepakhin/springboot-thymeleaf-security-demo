@@ -92,5 +92,3 @@ public class HomeController {
 TODO:
 - tests
 - padding messages
-- delete message
-- 
