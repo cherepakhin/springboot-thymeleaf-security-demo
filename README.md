@@ -10,7 +10,6 @@ Java 8
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ````
 
-
 ````shell
 ./mvnw spring-boot:run
 ````
@@ -47,3 +46,51 @@ for __admin__ login (added string __"You will see this only if you are ADMIN"__)
     </p>
 </div>
 ````
+
+### Mobile screens
+
+<img src="doc/screen_mobile2.png" alt="Alt text" width="200" height="400">
+<img src="doc/screen_mobile1.png" alt="Alt text" width="200" height="400">
+<img src="doc/screen_mobile3.png" alt="Alt text" width="200" height="400">
+
+### Link action form to java code
+
+Form:
+
+link: th:action="@{/messages}" method="post"
+
+````html
+		<h3>Write a message:</h3>
+		<form th:action="@{/messages}" method="post"> // <--- POST /messages
+			<textarea name="content" cols="50" rows="3"></textarea>
+			<br>
+			<input class="btn btn-primary" type="submit" value="Submit" />
+		</form>
+
+````
+
+Handler in Java code (@PostMapping("/messages")):
+
+@PostMapping(value = "/new_message")<br/>
+value = "content"<br/>
+
+````java
+@Controller
+public class HomeController {
+    @PostMapping(value = "/new_message")
+    public String newMessage(@RequestParam(defaultValue = "----", value = "content") String newContent) {
+        ...
+    }
+}
+````
+
+### Links
+
+- [thymeleaf](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html)
+
+
+TODO:
+- tests
+- padding messages
+- delete message
+- 

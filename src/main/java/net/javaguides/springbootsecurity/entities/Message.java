@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Objects;
 
 /**
  * @author Ramesh Fadatare
@@ -19,6 +20,18 @@ public class Message {
 
     @Column(nullable = false)
     private String content;
+
+    public Message() {
+        super();
+        this.n = -1;
+        this.content = "";
+    }
+
+    public Message(Integer n, String content) {
+        this();
+        this.n = n;
+        this.content = content;
+    }
 
     public Integer getN() {
         return n;
@@ -36,4 +49,24 @@ public class Message {
         this.content = content;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Message)) return false;
+        Message message = (Message) o;
+        return Objects.equals(n, message.n) && Objects.equals(content, message.content);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(n, content);
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "n=" + n +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

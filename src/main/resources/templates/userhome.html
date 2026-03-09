@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-	layout:decorator="layout">
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	  xmlns:text-align="http://www.w3.org/1999/xhtml"
+	  layout:decorator="layout">
 
 <head>
 <title>User Home</title>
 </head>
 <body>
-	<div layout:fragment="content">
-		<p>
+	<div layout:fragment="content" class="container login left-0">
+		<div class="welcome">
 			Welcome <span sec:authentication="principal.username">User</span>
-		</p>
+		</div>
 		<p>
 			<a th:href="@{/}">Root</a>
 		</p>
@@ -23,21 +24,28 @@
 		<div sec:authorize="hasRole('ROLE_ADMIN')">
 			<h3>You will see this only if you are <b>ADMIN</b></h3>
 			<p>
-				<a th:href="@{/admin/home}">Admin Home</a>
+				<a th:href="@{/admin/home}">Admin Home</a><br/>
+				<a th:href="@{/new_message}">New message</a>
 			</p>
 		</div>
-		<h3>Write a message:</h3>
-		<form th:action="@{/messages}" method="post">
-			<textarea name="content" cols="50" rows="3"></textarea>
-			<br>
-			<input type="submit" value="Submit" />
-		</form>
-		<div>
-			<br>
-			<div class="panel panel-default middle-panel">
-				<div class="panel-heading">Messages</div>
-				<p th:each="msg: ${msgs}" th:text="${msg.n} + '. ' + ${msg.content}"></p>
-			</div>
+		<table id="table-messages" class="panel panel-default middle-panel">
+			<tr>
+				<th class="panel-heading panel-header">N</th>
+				<th class="panel-heading panel-header">CONTENT</th>
+				<th class="panel-heading panel-header">Actions</th>
+			</tr>
+			<tr th:each="msg,iterStat : ${msgs}" th:class="${iterStat.odd}? 'odd'">
+				<td class="td-n" th:text="${msg.n}">N</td>
+				<td class="td-message" th:text="${msg.content}">CONTENT</td>
+				<td class="td-action">
+					<a th:href="@{'/messages/edit_message/{n}'(n=${msg.n})}"><i class="fa fa-pencil-square-o" style="font-size:20px"></i></a>
+					<a th:href="@{'/messages/delete/{n}'(n=${msg.n})}" onclick="return confirm('Are you sure you want to delete this message?');"><i class="fa fa-trash" style="font-size:20px"></i></a>
+				</td>
+			</tr>
+		</table>
+		<div class="panel panel-default middle-panel">
+			<div class="panel-heading">Messages</div>
+			<div class="message" th:each="msg: ${msgs}" th:text="${msg.n} + '. ' + ${msg.content}"></div>
 		</div>
 	</div>
 
