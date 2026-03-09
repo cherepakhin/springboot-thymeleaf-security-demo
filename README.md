@@ -47,6 +47,12 @@ for __admin__ login (added string __"You will see this only if you are ADMIN"__)
 </div>
 ````
 
+### Mobile screens
+
+<img src="doc/screen_mobile2.png" alt="Alt text" width="200" height="400">
+<img src="doc/screen_mobile1.png" alt="Alt text" width="200" height="400">
+<img src="doc/screen_mobile3.png" alt="Alt text" width="200" height="400">
+
 ### Link action form to java code
 
 Form:
