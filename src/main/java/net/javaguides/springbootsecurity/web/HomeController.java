@@ -21,20 +21,20 @@ public class HomeController {
 
     @GetMapping("/home")
     public String home(Model model) {
-        model.addAttribute("msgs", messageRepository.findAll());
+        model.addAttribute("msgs", this.messageRepository.findAll());
         return "userhome";
     }
 
     @GetMapping("/messages/delete/{n}")
     public String deleteMessage(@PathVariable Integer n) {
         logger.info("Delete message: n=" + n);
-        messageRepository.deleteById(n);
+        this.messageRepository.deleteById(n);
         return "redirect:/home";
     }
 
     @GetMapping("/messages/edit_message/{id}")
     public String edit(@PathVariable Integer id, Model model) {
-        Message message = messageRepository.getById(id);
+        Message message = this.messageRepository.getById(id);
         model.addAttribute("message", message);
         return "/edit_message"; // show templates/edit_message.html
     }
@@ -50,12 +50,12 @@ public class HomeController {
         Message message = new Message();
         message.setN(n);
         message.setContent(newContent);
-        messageRepository.save(message);
+        this.messageRepository.save(message);
         return "redirect:/home";
     }
 
     @GetMapping("/new_message")
-    public String newMessage(Model model) {
+    public String getFormNewMessage(Model model) {
         // model.addAttribute("msgs", messageRepository.findAll());
         return "new_message";
     }
@@ -65,7 +65,7 @@ public class HomeController {
         logger.info("New message: " + newContent);
         Message message = new Message();
         message.setContent(newContent);
-        messageRepository.save(message);
+        this.messageRepository.save(message);
         return "redirect:/home";
     }
 
